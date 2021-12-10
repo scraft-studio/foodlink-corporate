@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import BannerSlider from "../SharedComponents/BannerSlider/BannerSlider";
 
 const HomePage = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <BannerSlider></BannerSlider>
+    </div>
+  );
 };
 
 export default HomePage;

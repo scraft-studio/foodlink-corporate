@@ -1,0 +1,21 @@
+.BannerSlider {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+}
+
+.home_vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-90deg);
+  color: #006998;
+}
+.social_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  color: #006998;
+}

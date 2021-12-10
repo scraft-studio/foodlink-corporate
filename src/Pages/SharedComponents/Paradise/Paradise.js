@@ -1,7 +1,7 @@
 import React from "react";
 
-const Header = () => {
+const Paradise = () => {
   return <div></div>;
 };
 
-export default Header;
+export default Paradise;
