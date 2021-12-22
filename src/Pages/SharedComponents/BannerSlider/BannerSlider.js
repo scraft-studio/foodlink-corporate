@@ -1,163 +1,113 @@
-import { Typography, Button, Container, Link } from "@mui/material";
+import { Button, Container, IconButton, Link, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import React from "react";
-import Slider from "react-slick";
-import "./BannerSlider.css";
 import { FaEnvelope, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
+import Slider from "react-slick";
+import "./BannerSlider.css";
 
-const BannerSlider = () => {
+const BannerSlider = (props) => {
+  const classes = useStyle();
+
+  console.log(props);
+
   const settings = {
     dots: true,
-    // arrows: true,
+    autoplay:true,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
   return (
-    <div className="BannerSlider">
-      <div className="home_vertical">
-        <Typography>Home</Typography>
-      </div>
-      <Slider {...settings}>
-        <Box
-          sx={{
-            width: "100%",
-            maxHeight: "574px",
-            height: "574px",
-            textAlign: "center",
-            color: "#fff",
-            backgroundImage: `url("https://i.ibb.co/tXh2DrX/Group-4.png")`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
-          }}
-        >
-          <Container
-            sx={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{ width: "70%", marginBottom: "30px" }}
-            >
-              We deliver premium food services to your team so you can focus on
-              your core business activities
-            </Typography>
-            <Button
-              variant="outlined"
-              sx={{ borderColor: "#fff", color: "#fff" }}
-            >
-              READ MORE
-            </Button>
-          </Container>
+    <Box className={classes.root}>
+      <Box className="BannerSlider" >
+        <Box className="home_vertical">
+          <Typography>{props.page}</Typography>
         </Box>
 
-        <Box
-          sx={{
-            width: "100%",
-            maxHeight: "574px",
-            height: "574px",
-            textAlign: "center",
-            color: "#fff",
-            backgroundImage: `url("https://i.ibb.co/tXh2DrX/Group-4.png")`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
-          }}
-        >
-          <Container
-            sx={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{ width: "70%", marginBottom: "30px" }}
-            >
-              We deliver premium food services to your team so you can focus on
-              your core business activities
-            </Typography>
-            <Button
-              variant="outlined"
-              sx={{ borderColor: "#fff", color: "#fff" }}
-            >
-              READ MORE
-            </Button>
-          </Container>
-        </Box>
+        <Container disableGutters style={{padding:"0 5px"}} >
+          <Slider {...settings}>
+            {/* slide item */}
+            {
+              props.banner.map(items => {
+                return (
+                  <Box key={items?.bgImgUrl} className="bannerItem"
+                    sx={{
+                    backgroundImage: `url(${items?.bgImgUrl})`,
+                  }}
+                >
+                    <Box  className={classes.bannerCont} >
+                      <Typography component="h3" variant="inherit" className="bannerHeading" >
+                        {items?.headingText}
+                      </Typography>
+                      {
+                        items?.buttonName && 
+                        <Button component="a" href={items?.buttonURl} className="bannerButton"
+                        variant="inherit">{items?.buttonName}</Button>
+                      }
+                      
+                    </Box>
+                  </Box>
+                )
+              })
+            }
+            {/* Slide Item end */}
+          </Slider>
+        </Container>
 
-        <Box
-          sx={{
-            width: "100%",
-            maxHeight: "574px",
-            height: "574px",
-            textAlign: "center",
-            color: "#fff",
-            backgroundImage: `url("https://i.ibb.co/tXh2DrX/Group-4.png")`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
-          }}
-        >
-          <Container
-            sx={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{ width: "70%", marginBottom: "30px" }}
-            >
-              We deliver premium food services to your team so you can focus on
-              your core business activities
-            </Typography>
-            <Button
-              variant="outlined"
-              sx={{ borderColor: "#fff", color: "#fff" }}
-            >
-              READ MORE
-            </Button>
-          </Container>
+
+        <Box className="social_vertical">
+          <Link target="_blank" href="/">
+            <IconButton className={classes.iconColor} size="small">
+              <FaEnvelope />
+            </IconButton>
+          </Link>
+          <Link target="_blank" href="/">
+            <IconButton className={classes.iconColor} size="small">
+              <IoMdCall />
+            </IconButton>
+          </Link>
+          <Link target="_blank" href="/">
+            <IconButton className={classes.iconColor} size="small">
+              <FaFacebook />
+            </IconButton>
+          </Link>
+          <Link target="_blank" href="/">
+            <IconButton className={classes.iconColor} size="small">
+              <FaInstagram />
+            </IconButton>
+          </Link>
+          <Link target="_blank" href="/">
+            <IconButton className={classes.iconColor} size="small">
+              <FaTwitter />
+            </IconButton>
+          </Link>
         </Box>
-      </Slider>
-      <div className="social_vertical">
-        <Link href="#">
-          <FaEnvelope />
-        </Link>
-        <Link href="#">
-          <IoMdCall />
-        </Link>
-        <Link href="#">
-          <FaFacebook />
-        </Link>
-        <Link href="#">
-          <FaInstagram />
-        </Link>
-        <Link href="#">
-          <FaTwitter />
-        </Link>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
+
+const useStyle = makeStyles({
+  root: {
+    maxWidth: "1322px",
+    margin:"auto"
+  },
+  iconColor: {
+    color:"rgba(0, 105, 152, 1)!important"
+
+  },
+  bannerCont: {
+    maxWidth: "70%",
+    margin: "auto",
+    textAlign:"center"
+  }
+
+});
+
+
 
 export default BannerSlider;
