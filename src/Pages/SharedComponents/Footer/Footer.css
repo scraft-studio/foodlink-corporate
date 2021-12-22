@@ -111,6 +111,11 @@
   }
 }
 @media only screen and (max-width: 768px) {
+  .footerArea {
+    border-top: 1px solid #153261;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
   .subcri button {
     margin-top: 10px;
     display: block;
@@ -180,6 +185,7 @@
     margin-bottom: 0px;
   }
 }
+
 @media only screen and (max-width: 368px) {
   .BannerSlider .slick-dots {
     bottom: 1px;

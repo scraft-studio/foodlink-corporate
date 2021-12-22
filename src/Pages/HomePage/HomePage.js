@@ -1,7 +1,9 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import BannerSlider from "../SharedComponents/BannerSlider/BannerSlider";
-import Footer from "../SharedComponents/Footer/Footer";
+import BrandLogo from "../SharedComponents/BrandLogo/BrandLogo";
+import DomainsOfOperation from "./DomainsOfOperation";
+import GiwaAwards from "./GiwaAwards";
 import "./HomePage.css";
 import HomeSectionOne from "./HomeSectionOne";
 const HomePage = () => {
@@ -19,12 +21,13 @@ const HomePage = () => {
       })
   }, []);
 
-
   return (
     <Box>
-      <BannerSlider page={`Home`} banner={sliderBanner}></BannerSlider>
-      <HomeSectionOne/>
-      <Footer></Footer>
+      <BannerSlider page={`Home`} banner={sliderBanner} />
+      <HomeSectionOne />
+      <GiwaAwards />
+      <DomainsOfOperation />
+      <BrandLogo />
     </Box>
   );
 };
